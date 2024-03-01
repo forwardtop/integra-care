@@ -1,0 +1,1 @@
+<div>Admin,<br/><br/>New ticket #531770 created.<br/>-------------------<br/>Name: test<br/>Email: devtop0109@gmail.com<br/>Dept: Provisioning<br/><br/><p>test</p><br/>-------------------<br/><br/>To view/respond to the ticket, please login to the support ticket system.<br/><br/>- Your friendly Customer Support System - powered by Integra Support.</div>

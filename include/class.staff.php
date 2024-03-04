@@ -1399,6 +1399,7 @@ implements AuthenticatedUser, EmailContact, TemplateVariable, Searchable
             $errors['username'] = __('Username already in use');
 
         if (!$vars['email'] || !Validator::is_valid_email($vars['email']))
+        if (!$vars['email'])
             $errors['email'] = __('Valid email is required');
         elseif (Email::getIdByEmail($vars['email']))
             $errors['email'] = __('Already in use system email');
@@ -1415,8 +1416,8 @@ implements AuthenticatedUser, EmailContact, TemplateVariable, Searchable
 
         if (!$vars['dept_id'])
             $errors['dept_id'] = __('Department is required');
-        if (!$vars['role_id'])
-            $errors['role_id'] = __('Role for primary department is required');
+        // if (!$vars['role_id'])
+        //     $errors['role_id'] = __('Role for primary department is required');
 
         $dept = Dept::lookup($vars['dept_id']);
         if ($dept && !$dept->isActive())
@@ -1441,14 +1442,16 @@ implements AuthenticatedUser, EmailContact, TemplateVariable, Searchable
         $this->updatePerms($vars['perms'], $errors);
 
         //checkboxes
-        $vars['isadmin'] = isset($vars['isadmin']) ? 1 : 0;
-        $vars['islocked'] = isset($vars['islocked']) ? 0 : 1;
+        $vars['isadmin'] = !isset($vars['isadmin']) ? 0 :(int)$vars['isadmin'];
+        $vars['isactive'] = !isset($vars['isactive']) ? 0 : (int)$vars['isactive'];
         $vars['isvisible'] = isset($vars['isvisible']) ? 1 : 0;
         $vars['onvacation'] = isset($vars['onvacation']) ? 1 : 0;
         $vars['assigned_only'] = isset($vars['assigned_only']) ? 1 : 0;
 
+        
+
         $this->isadmin = $vars['isadmin'];
-        $this->isactive = $vars['islocked'];
+        $this->isactive = $vars['isactive'];
         $this->isvisible = $vars['isvisible'];
         $this->onvacation = $vars['onvacation'];
         $this->assigned_only = $vars['assigned_only'];

@@ -1,6 +1,6 @@
 <?php
 if(!defined('OSTADMININC') || !$thisstaff || !$thisstaff->isAdmin()) die('Access Denied');
-
+echo $info['isadmin'];
 $info = $qs = array();
 
 if ($_REQUEST['a']=='add'){
@@ -278,7 +278,7 @@ $info=Format::htmlchars(($errors && $_POST)?$_POST:$info);
                 <select name="dept_id" id="dept_id">
                     <option value="0">&mdash; <?php echo __('Select Department');?> &mdash;</option>
                     <?php
-                    $sql='SELECT dept_id, dept_name FROM '.DEPT_TABLE.' ORDER BY dept_name';
+                    $sql='SELECT id, name FROM '.DEPT_TABLE.' ORDER BY name';
                     if(($res=db_query($sql)) && db_num_rows($res)){
                         while(list($id,$name)=db_fetch_row($res)){
                             $sel=($info['dept_id']==$id)?'selected="selected"':'';

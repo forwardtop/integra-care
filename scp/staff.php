@@ -37,6 +37,7 @@ if($_POST){
             }
             break;
         case 'create':
+            echo "thisis called!!!!";
             $staff = Staff::create();
             // Unpack the data from the set-password dialog (if used)
             if (isset($_SESSION['new-agent-passwd'])) {

@@ -20,9 +20,8 @@ jobs:
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
         with:
-          server: ftp.uc8.com.au
+          server: ftp.integra-care.com.au
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           server-dir: /public_html/
-          local-dir: /
           port: 21  
